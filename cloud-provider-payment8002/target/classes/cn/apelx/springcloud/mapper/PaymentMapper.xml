@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.apelx.springcloud.mapper.PaymentMapper">
+    <sql id="paymentBaseColumn">
+        pay_id, pay_serial_number
+    </sql>
+
+    <insert id="savePayment" parameterType="cn.apelx.springcloud.domain.Payment" useGeneratedKeys="true"
+            keyProperty="payId">
+        insert into payment(pay_serial_number)
+        values (#{paySerialNumber,jdbcType=VARCHAR})
+    </insert>
+
+    <resultMap id="paymentResultMap" type="cn.apelx.springcloud.domain.Payment">
+        <id column="pay_id" property="payId" jdbcType="BIGINT"/>
+        <result column="pay_serial_number" property="paySerialNumber" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="findById" resultMap="paymentResultMap">
+        select
+        <include refid="paymentBaseColumn"/>
+        from payment
+        where pay_id = #{payId,jdbcType=BIGINT}
+    </select>
+
+</mapper>
