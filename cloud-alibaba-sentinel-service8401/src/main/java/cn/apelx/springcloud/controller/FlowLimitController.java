@@ -69,6 +69,6 @@ public class FlowLimitController {
     }
 
     public String dealTestHotKey(String p1, String p2, BlockException blockException) {
-        return "--------- deal testHotKey, /(ㄒoㄒ)/~~";
+        return "--------- deal testHotKey, /(ㄒoㄒ)/~~  -------- p1: " + p1 +  " > p2: " + p2 + " > blockException: " + blockException;
     }
 }

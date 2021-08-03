@@ -15,7 +15,7 @@ public class CustomerBlockHandler {
         return new CommonResponse(44444, "按客户自定义, Global handlerException ----- 1");
     }
 
-    public static CommonResponse handlerException2(BlockException blockException) {
+    public static CommonResponse handlerException2(String a, BlockException blockException) {
         return new CommonResponse(44444, "按客户自定义, Global handlerException ----- 2");
     }
 }

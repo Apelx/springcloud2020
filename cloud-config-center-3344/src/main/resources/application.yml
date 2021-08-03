@@ -10,16 +10,15 @@ spring:
       server:
         git:
           # github 上git仓库的名字
-#          uri: git@github.com:Apelx/springcloud-config.git
-          uri: https://github.com/Apelx/springcloud-config.git
+          uri: https://gitee.com/apelx/springcloud-config-shangguigu.git
           # 搜索的目录
           search-paths:
-            - springcloud-config
+            - springcloud-config-shangguigu
       # 读取的分支
       label: master
   # RabbitMQ 相关配置
   rabbitmq:
-    host: localhost
+    host: apelx
     port: 5672
     username: guest
     password: guest

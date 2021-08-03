@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 速率限制 控制类
  *
- * @author lx
+ * @author apelx
  * @since 2020/7/9 17:45
  */
 @RestController
@@ -27,7 +27,7 @@ public class RateLimitController {
     }
 
     public CommonResponse<Payment> handleException(BlockException blockException) {
-        return new CommonResponse<>(444, blockException.getClass().getCanonicalName() + "\t 服务不可用");
+        return new CommonResponse<>(444, blockException + "\t 服务不可用");
     }
 
 
@@ -39,7 +39,7 @@ public class RateLimitController {
 
     @GetMapping(value = "/rateLimit/customerBlockHandler")
     @SentinelResource(value = "customerBlockHandler", blockHandlerClass = CustomerBlockHandler.class, blockHandler = "handlerException2")
-    public CommonResponse<Payment> customerBlockHandler() {
+    public CommonResponse<Payment> customerBlockHandler(String p1) {
         return new CommonResponse<>(200, "按客户自定义", new Payment(2020L, "serial1003"));
     }
 }

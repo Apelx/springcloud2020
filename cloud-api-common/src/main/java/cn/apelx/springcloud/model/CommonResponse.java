@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommonResponse<T> {
-    private Integer Code;
+    private Integer code;
     private String message;
     private T data;
 

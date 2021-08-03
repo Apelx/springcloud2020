@@ -8,6 +8,8 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+        namespace: 3dbb835a-9df7-48c5-83c1-746b2b16a3e5
+        group: spring-cloud-sgg
     sentinel:
       transport:
         # 配置sentinel dashboard地址

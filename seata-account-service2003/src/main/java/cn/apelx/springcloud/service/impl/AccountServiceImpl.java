@@ -36,6 +36,7 @@ public class AccountServiceImpl implements AccountService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
+        int a = 1 /0;
         accountDAO.decreaseAccount(userId, money);
         log.info("------> accountService 扣减账户余额结束");
     }

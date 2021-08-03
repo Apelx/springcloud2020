@@ -21,13 +21,13 @@ public class OrderNacosController {
 
     private RestTemplate restTemplate;
 
-    private String url = "http://nacos-payment-provider";
+//    private String url = "http://nacos-payment-provider";
     @Value("${service-url.nacos-user-service}")
     private String serverUrl;
 
     @GetMapping(value = "/consumer/payment/nacos/{id}")
     public String paymentInfo(@PathVariable("id") Long id) {
-        return restTemplate.getForObject(url + "/payment/nacos/" + id, String.class);
+        return restTemplate.getForObject(serverUrl + "/payment/nacos/" + id, String.class);
     }
 
     @Resource

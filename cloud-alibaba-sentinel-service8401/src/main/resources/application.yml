@@ -8,6 +8,8 @@ spring:
       discovery:
         # nacos服务注册中心地址
         server-addr: localhost:8848
+        group: spring-cloud-sgg
+        namespace: 3dbb835a-9df7-48c5-83c1-746b2b16a3e5
     sentinel:
       transport:
         # 配置 sentinel dashboard地址
@@ -19,7 +21,8 @@ spring:
           nacos:
             server-addr: localhost:8848
             dataId: cloud-alibaba-sentinel-service
-            group: DEFAULT_GROUP
+            groupId: spring-cloud-sgg
+            namespace: 3dbb835a-9df7-48c5-83c1-746b2b16a3e5
             data-type: json
             rule-type: flow
 
