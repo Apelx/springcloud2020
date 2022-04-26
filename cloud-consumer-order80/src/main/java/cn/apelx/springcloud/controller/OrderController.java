@@ -38,6 +38,11 @@ public class OrderController {
         return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + payId, CommonResponse.class);
     }
 
+    @GetMapping(value = "/getError/{payId}")
+    public CommonResponse<Payment> getPaymentError(@PathVariable("payId") Long payId) {
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/getError/" + payId, CommonResponse.class);
+    }
+
     @GetMapping(value = "/getForEntity/{payId}")
     public CommonResponse<Payment> getForEntityPayment(@PathVariable("payId") Long payId) {
         ResponseEntity<CommonResponse> responseEntity = restTemplate.getForEntity(PAYMENT_URL + "/payment/get/" + payId, CommonResponse.class);

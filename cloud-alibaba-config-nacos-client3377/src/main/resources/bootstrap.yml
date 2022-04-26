@@ -2,19 +2,25 @@
 server:
   port: 3377
 
+
 spring:
   application:
     name: nacos-config-client
+  profiles:
+    #    active: info # 激活info环境
+    #    active: test # 激活测试环境
+    active: dev # 激活开发环境
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848 # nacos服务注册中心地址
+        server-addr: 192.168.32.110:8848,192.168.32.111:8848,192.168.32.112:8848 # nacos服务注册中心地址
       config:
-        server-addr: localhost:8848 # nacos 作为配置中心地址
+        server-addr: 192.168.32.110:8848,192.168.32.111:8848,192.168.32.112:8848 # nacos 作为配置中心地址
         file-extension: yaml # 指定yaml格式的配置
-        group: spring-cloud-sgg
+#        group: spring-cloud-sgg
         # 指定命名空间
-        namespace: 3dbb835a-9df7-48c5-83c1-746b2b16a3e5
+#        namespace: 3dbb835a-9df7-48c5-83c1-746b2b16a3e5
+        name: ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
 
 
 # ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}

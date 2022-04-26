@@ -70,6 +70,13 @@ public class PaymentController {
         return commonResponse;
     }
 
+    @GetMapping(value = "/getError/{payId}")
+    public CommonResponse<Payment> findByIdError(@PathVariable("payId") Long payId) {
+        CommonResponse<Payment> commonResponse = new CommonResponse<>();
+        int a = 10 / 0;
+        return commonResponse;
+    }
+
     /**
      * 服务发现 discovery
      *
