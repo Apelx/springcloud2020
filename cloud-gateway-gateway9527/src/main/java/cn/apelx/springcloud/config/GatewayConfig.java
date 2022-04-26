@@ -21,11 +21,10 @@ public class GatewayConfig {
      */
     @Bean
     public RouteLocator routeLocatorDomestic(RouteLocatorBuilder routeLocatorBuilder) {
-        RouteLocatorBuilder.Builder routes = routeLocatorBuilder.routes();
-        routes.route("path_route_domestic",
-                r -> r.path("/guonei")
+        return routeLocatorBuilder.routes()
+                .route("path_route_domestic", r -> r.path("/guonei")
                         .uri("http://news.baidu.com/guonei")).build();
-        return routes.build();
+
     }
 
     /**

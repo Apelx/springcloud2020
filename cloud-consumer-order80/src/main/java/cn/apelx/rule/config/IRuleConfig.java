@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Ribbon 自定义 iRule 配置类
  *
+ *
  * @author lx
  * @since 2020/5/28 22:00
  */

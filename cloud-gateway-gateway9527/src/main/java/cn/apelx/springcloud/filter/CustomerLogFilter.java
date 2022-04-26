@@ -8,6 +8,7 @@ import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -35,8 +36,9 @@ public class CustomerLogFilter implements GlobalFilter, Ordered {
         String username = request.getQueryParams().getFirst("username");
         if (StrUtil.isEmpty(username)) {
             log.error("未包含用户名，非法用户");
-            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
-            return exchange.getResponse().setComplete();
+            ServerHttpResponse response = exchange.getResponse();
+            response.setStatusCode(HttpStatus.NOT_ACCEPTABLE);
+            return response.setComplete();
         }else  {
             log.info(">>> CustomerLogFilter filter 用户名：" + username);
         }

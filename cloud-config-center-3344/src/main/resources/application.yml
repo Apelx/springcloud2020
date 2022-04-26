@@ -18,10 +18,11 @@ spring:
       label: master
   # RabbitMQ 相关配置
   rabbitmq:
-    host: apelx
+    host: apelx.cn
     port: 5672
     username: guest
     password: guest
+    virtual-host: /
 
 #### eureka 相关配置
 eureka:

@@ -22,9 +22,9 @@ spring:
           uri: lb://cloud-payment-service
           predicates:
             - Path=/payment/lb/**               # 断言；路径相匹配的进行路由
-            - Before=2021-09-28T15:46:47.571-07:00[Asia/Shanghai]
-            - After=2020-08-02T13:46:56.571-07:00[Asia/Shanghai]
-            - Between=2020-08-02T15:46:56.571-07:00[Asia/Shanghai], 2021-09-28T15:46:47.571-07:00[Asia/Shanghai]
+#            - Before=2023-04-26T17:17:47.571-07:00[Asia/Shanghai]
+#            - After=2022-04-26T17:20:00.000-00:00[Asia/Shanghai]
+#            - Between=2020-08-02T15:46:56.571-07:00[Asia/Shanghai], 2021-09-28T15:46:47.571-07:00[Asia/Shanghai]
 #            - Cookie=username,apelx
 #            - Header=X-Request-Id,\d+ #请求头要包含X-Request-Id属性，并且值为整数的正则表达式
 #            - Host=**.apelx.com
