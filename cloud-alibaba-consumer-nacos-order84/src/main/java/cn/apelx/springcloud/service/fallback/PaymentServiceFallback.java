@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class PaymentServiceFallback implements PaymentService {
+
     @Override
     public CommonResponse<Payment> paymentSQL(Long id) {
         return new CommonResponse<>(444444, "服务降级返回， --- PaymentServiceFallback", new Payment(id, "errorSerial"));

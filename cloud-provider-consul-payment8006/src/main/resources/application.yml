@@ -7,8 +7,10 @@ spring:
   ### consul 注册中心地址
   cloud:
     consul:
-      host: localhost
-      port: 8500
+      #host: localhost
+      #port: 8500
+      host: 192.168.32.120
+      port: 30007
       discovery:
         service-name: ${spring.application.name}
 

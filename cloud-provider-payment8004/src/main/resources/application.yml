@@ -6,4 +6,5 @@ spring:
   cloud:
     # 服务别名 --- 注册zookeeper到注册中心名称
     zookeeper:
-      connect-string: apelx.cn:2181
+      #connect-string: apelx.cn:2181
+      connect-string: 192.168.32.120:30009

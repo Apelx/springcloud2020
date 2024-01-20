@@ -16,10 +16,10 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: apelx.cn
-                port: 5672
-                username: guest
-                password: guest
+                host: 192.168.32.120
+                port: 30001
+                username: admin
+                password: admin
       # 服务的整合处理
       bindings:
         # 这个名字是一个通道的名称

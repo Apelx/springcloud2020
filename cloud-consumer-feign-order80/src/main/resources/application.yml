@@ -7,14 +7,44 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
 
+# ribbon 默认被废弃
 # 设置feign客户端超时时间(OpenFeign默认支持ribbon)
-ribbon:
+#ribbon:
   # 建立连接所用时间，适用于网络状况正常的情况下，两端连接所用时间
-  ReadTimeout: 5000
+#  ReadTimeout: 5000
   # 建立连接后从服务器读取到可用资源所用的时间
-  ConnectTimeout: 5000
+#  ConnectTimeout: 5000
+
 
 # 开启feignService日志(debug级别多用于dev环境)
 logging:
   level:
     cn.apelx.springcloud.service.FeignPaymentService: debug
+  pattern:
+    level: "%5p [${spring.application.name:test},%X{traceId:-},%X{spanId:-}]"
+
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 3000
+            readTimeout: 3000
+            loggerLevel: full
+
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      #endpoint: http://localhost:9411/api/v2/spans
+      endpoint: http://192.168.32.120:30008/api/v2/spans
+      connect-timeout: 1s
+      read-timeout: 10s
+  endpoints:
+    web:
+      exposure:
+        include: "*"

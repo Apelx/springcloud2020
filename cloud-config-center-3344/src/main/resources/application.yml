@@ -14,14 +14,15 @@ spring:
           # 搜索的目录
           search-paths:
             - springcloud-config-shangguigu
+          default-label: master
       # 读取的分支
-      label: master
+      #label: master
   # RabbitMQ 相关配置
   rabbitmq:
-    host: apelx.cn
-    port: 5672
-    username: guest
-    password: guest
+    host: 192.168.32.120
+    port: 30001
+    username: admin
+    password: admin
     virtual-host: /
 
 #### eureka 相关配置

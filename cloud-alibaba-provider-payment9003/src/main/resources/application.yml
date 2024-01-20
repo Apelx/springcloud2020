@@ -8,9 +8,10 @@ spring:
     nacos:
       discovery:
         # 配置nacos地址
-        server-addr: localhost:8848
-        group: spring-cloud-sgg
-        namespace: 3dbb835a-9df7-48c5-83c1-746b2b16a3e5
+        #server-addr: localhost:8848
+        server-addr: 192.168.32.120:30006
+#        group: spring-cloud-sgg
+#        namespace: 3dbb835a-9df7-48c5-83c1-746b2b16a3e5
 management:
   endpoints:
     web:

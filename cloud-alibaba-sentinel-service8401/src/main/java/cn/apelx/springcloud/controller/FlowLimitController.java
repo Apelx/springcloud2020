@@ -1,8 +1,10 @@
 package cn.apelx.springcloud.controller;
 
+import cn.apelx.springcloud.service.FlowLimitService;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +21,9 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class FlowLimitController {
 
+    @Autowired
+    private FlowLimitService flowLimitService;
+
     @GetMapping(value = "/testA")
     public String testA() {
        /* try {
@@ -34,6 +39,20 @@ public class FlowLimitController {
     public String testB() {
         return "------ testB";
     }
+
+    /**
+     *  测试链路
+     */
+    @GetMapping(value = "/testC")
+    public String testC() {
+        return flowLimitService.testCC();
+    }
+    @GetMapping(value = "/testC_1")
+    public String testC_1() {
+        return flowLimitService.testCC();
+    }
+
+
 
     @GetMapping(value = "/testD")
     public String testD() {
@@ -64,7 +83,7 @@ public class FlowLimitController {
     @SentinelResource(value = "testHotKey", blockHandler = "dealTestHotKey")
     public String testHotKey(@RequestParam(value = "p1", required = false) String p1,
                              @RequestParam(value = "p2", required = false) String p2) {
-        int age = 10/0;
+//        int age = 10/0;
         return " --------- testHotKey";
     }
 

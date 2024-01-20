@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
 
 /**
  * 断路器 Controller
@@ -31,7 +30,7 @@ public class CircleBreakerController {
     @Value("${service-url.nacos-user-service}")
     private String serverUrl;
 
-    @Resource
+    @Autowired
     private RestTemplate restTemplate;
 
 
@@ -42,7 +41,7 @@ public class CircleBreakerController {
 //     @SentinelResource(value = "fallback", fallback = "handlerFallback")
 //     blockHandler 只负责sentinel控制台配置违规
 //     @SentinelResource(value = "fallback", blockHandler = "blockHandler")
-    @SentinelResource(value = "fallback", fallback = "handlerFallback", blockHandler = "blockHandler",
+    @SentinelResource(value = "fallback", fallback = "handlerFallback", blockHandler = "blockHandler" ,
             // 注意：无法忽略BlockException
             exceptionsToIgnore = {BlockException.class})
 //            exceptionsToIgnore = {IllegalArgumentException.class})
@@ -61,17 +60,17 @@ public class CircleBreakerController {
 
     public CommonResponse<Payment> handlerFallback(@PathVariable Long id, Throwable ex) {
         Payment payment = new Payment(id, "null");
-        return new CommonResponse<>(444, "兜底异常handlerFallback, exception 内容：" + ex.getMessage(), payment);
+        return new CommonResponse<>(444, "兜底异常(管runtimeException)handlerFallback, exception 内容：" + ex.getMessage(), payment);
     }
 
     public CommonResponse<Payment> blockHandler(@PathVariable(value = "id") Long id, BlockException blockException) {
         Payment payment = new Payment(id, "哇哈哈哈");
-        return new CommonResponse<>(445, "blockHandler-sentinel限流,无此流水：blockException 内容：" + blockException.getMessage(), payment);
+        return new CommonResponse<>(445, "blockHandler-sentinel限流(管sentinel配置异常),无此流水：blockException 内容：" + blockException.getMessage(), payment);
     }
 
 
     // ########################################### OpenFeign
-    @Resource
+    @Autowired
     private PaymentService paymentService;
 
     @GetMapping(value = "/consumer/openfeign/{id}")

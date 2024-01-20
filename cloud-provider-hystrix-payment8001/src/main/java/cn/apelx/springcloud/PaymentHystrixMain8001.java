@@ -1,11 +1,11 @@
 package cn.apelx.springcloud;
 
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
+import jakarta.servlet.Servlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 
 /**
@@ -15,8 +15,8 @@ import org.springframework.context.annotation.Bean;
  * @since 2020/6/8 22:03
  */
 @SpringBootApplication
-@EnableEurekaClient
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
+@EnableHystrix
 public class PaymentHystrixMain8001 {
     public static void main(String[] args) {
         SpringApplication.run(PaymentHystrixMain8001.class, args);
@@ -29,13 +29,13 @@ public class PaymentHystrixMain8001 {
      *
      * @return
      */
-    @Bean
+    /*@Bean
     public ServletRegistrationBean getServlet() {
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
-        ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean((Servlet) streamServlet, "/hystrix.stream");
         registrationBean.setLoadOnStartup(1);
         registrationBean.addUrlMappings("/hystrix.stream");
         registrationBean.setName("HystrixMetricsStreamServlet");
         return registrationBean;
-    }
+    }*/
 }

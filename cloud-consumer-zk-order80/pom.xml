@@ -36,11 +36,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--添加zookeeper3.5.6版本-->
+        <!--添加zookeeper版本-->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.5.6</version>
         </dependency>
         <!--热部署-->
         <dependency>

@@ -6,7 +6,8 @@ spring:
     name: cloud-consumer-consul-order
   cloud:
     consul:
-      host: localhost
-      port: 8500
+      host: 192.168.32.120
+      #port: 8500
+      port: 30007
       discovery:
         service-name: ${spring.application.name}

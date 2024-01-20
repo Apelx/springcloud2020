@@ -7,9 +7,10 @@ spring:
     nacos:
       discovery:
         # 配置nacos地址
-        server-addr: localhost:8848
-        group: spring-cloud-sgg
-        namespace: 3dbb835a-9df7-48c5-83c1-746b2b16a3e5
+        # fixme: 9848端口偏移量是1000,9849端口偏移量是1001, 8848端口开放在30006,那么就要把9848暴露到31006端口,9849暴露到31007端口
+        server-addr: 192.168.32.120:30006
+#        group: spring-cloud-apelx
+#        namespace: 373bd532-a2a1-438b-a156-233948f83146
 management:
   endpoints:
     web:

@@ -36,6 +36,9 @@ public class PaymentController {
     @GetMapping(value = "/paymentSQL/{id}")
     public CommonResponse<Payment> paymentSQL(@PathVariable(value = "id") Long id) {
         Payment payment = hashMap.get(id);
+        if (payment == null) {
+            throw new RuntimeException("data not found");
+        }
         return new CommonResponse<>(200, "from mysql, serverPort:" + serverPort, payment);
     }
 }

@@ -2,7 +2,6 @@ package cn.apelx.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * 主启动类
@@ -11,7 +10,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @since 2020/7/1 20:45
  */
 @SpringBootApplication
-@EnableEurekaClient
 public class StreamMqMain8801 {
     public static void main(String[] args) {
         SpringApplication.run(StreamMqMain8801.class, args);
